@@ -1,0 +1,22 @@
+<div id="logo">
+    <img src="../../assets/images.jpg" alt="InterDemo">
+ </div>
+<nav>
+    <button mat-stroked-button [routerLink]="['']" ><mat-icon>home</mat-icon> Inicio </button>
+    
+    <button mat-stroked-button *ngIf="!logueado" [routerLink]="['login']" ><mat-icon>account_circle</mat-icon>Iniciar sesión </button>
+    
+    <button mat-button [matMenuTriggerFor]="belowMenu" mat-stroked-button *ngIf="logueado" > <mat-icon>store_mal_directory</mat-icon>Salas </button>
+    <mat-menu #belowMenu="matMenu" yPosition="below">
+        <button mat-menu-item [routerLink]="['/salas/nuevaSala']" ><mat-icon>add_circle</mat-icon> Crear nueva </button>
+        <button mat-menu-item [routerLink]="['salas']" ><mat-icon>list</mat-icon> Listado </button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="afterMenu" mat-stroked-button *ngIf="logueado" ><mat-icon>schedule</mat-icon> Reservas </button>
+      <mat-menu #afterMenu="matMenu" xPosition="after">
+        <button mat-menu-item [routerLink]="['/reservas/nuevaReserva']" ><mat-icon>add_circle</mat-icon> Crear nueva </button>
+        <button mat-menu-item [routerLink]="['reservas']" ><mat-icon>list</mat-icon> Listado </button>
+    </mat-menu>
+    
+    <button mat-stroked-button *ngIf="logueado" (click)="cerrarSesion()" ><mat-icon>account_circle</mat-icon> Cerrar sesión </button>
+</nav>

@@ -1,0 +1,82 @@
+<form [formGroup]="myForm" (ngSubmit)="crearReserva()">
+    <div>
+        <div>
+            <label>Motivo de la reserva: </label>
+            <mat-form-field appearance="fill">
+                <mat-select formControlName="descripcion" disableRipple>
+                  <mat-option value="Negocio">Reunión de negocios</mat-option>
+                  <mat-option value="Social">Reunión social</mat-option>
+                  <mat-option value="Presentación producto">Presentacion de productos</mat-option>
+                  <mat-option value="Videoconferencia">Videoconferencia</mat-option>
+                  <mat-option value="Otro">Otros</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <label>Turno: </label>
+            <mat-form-field appearance="fill">
+                <mat-select formControlName="turno" disableRipple>
+                  <mat-option value="Turno mañana">Turno mañana</mat-option>
+                  <mat-option value="Turno tarde">Turno tarde</mat-option>
+                  <mat-option value="Dia completo">Jornada completa</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        
+        <div>
+            <label>Seleccione la fecha de reserva: </label>
+            <mat-form-field appearance="fill">
+            <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" formControlName="fechaReunion">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        
+        <div>
+            <label>Sala: </label>
+            <mat-form-field appearance="fill">
+                <mat-select formControlName="sala" disableRipple>
+                  <mat-option *ngFor="let sala of salas" value="{{sala._id}}">{{sala.nombre | titlecase}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        
+        <h3>Datos de la persona ha realizar la reserva:</h3>
+        <div formGroupName="persona">
+            <label>Nombre completo: </label>
+            <mat-form-field appearance="fill">
+                <input type="text" formControlName="nombre" matInput>
+            </mat-form-field>
+        </div>
+        <mat-error *ngIf="myForm.get('persona.nombre').errors && myForm.get('persona.nombre').dirty">El nombre es obligatorio</mat-error>
+
+        <div formGroupName="persona">
+            <label>Documento Nacional de Identidad: </label>
+            <mat-form-field appearance="fill">
+                <input type="text" formControlName="dni" matInput>
+            </mat-form-field>
+        </div>
+        <mat-error *ngIf="myForm.get('persona.dni').errors && myForm.get('persona.dni').dirty">El número de documento es obligatorio</mat-error>
+        
+        <div formGroupName="persona">
+            <label>Email: </label>
+            <mat-form-field appearance="fill">
+                <input type="email" formControlName="email" matInput>
+            </mat-form-field>
+        </div>
+        <mat-error *ngIf="myForm.get('persona.email').errors && myForm.get('persona.email').dirty">El email es obligatorio</mat-error>
+        
+
+        <div formGroupName="persona">
+            <label>Teléfono: </label>
+            <mat-form-field appearance="fill">
+                <input type="text" formControlName="telefono" matInput>
+            </mat-form-field>
+        </div>
+        <mat-error *ngIf="myForm.get('persona.telefono').errors && myForm.get('persona.telefono').dirty">El telefono es obligatorio</mat-error> 
+       
+        <button mat-raised-button color="primary" type="submit" [disabled]="myForm.invalid">Crear reserva</button>
+    </div>
+</form>

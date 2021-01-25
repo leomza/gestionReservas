@@ -1,0 +1,23 @@
+<!--Si no quiero hacerlo en tablas hago lo siguiente:
+<div *ngFor="let sala of rows">
+    <p>Nombre: {{sala.nombre | titlecase}}</p>
+    <p>Descripcion: {{sala.descripcion}}</p>
+    <button mat-raised-button color="warn" (click)="eliminar(sala._id)" type="button" routerLink="/"><mat-icon>delete_forever</mat-icon> Eliminar sala </button>
+    <hr>
+    <hr>
+</div>
+-->
+
+<ngx-datatable class="material" columnMode="force" [rows]="rows" [headerHeight]="50" [footerHeight]="50"
+    rowHeight="auto" rowWidth="auto">
+
+    <ngx-datatable-column *ngFor="let col of columns" 
+    [name]="col.name" [prop]="col.prop"></ngx-datatable-column>
+    
+    <ngx-datatable-column name="" prop="_id">
+    <ng-template let-row="data" let-value="value" ngx-datatable-cell-template>
+    <button mat-raised-button color="warn" (click)="eliminar(value)" type="button" routerLink="/"><mat-icon>delete_forever</mat-icon> Eliminar sala </button>
+    </ng-template>
+    </ngx-datatable-column>
+
+</ngx-datatable>

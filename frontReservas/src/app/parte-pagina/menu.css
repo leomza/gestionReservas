@@ -1,0 +1,17 @@
+ #logo{
+   margin: auto;
+   height: 100px;
+   width: 320px;
+   text-align: center;
+ }
+
+ #logo h1{
+    font-family: 'Pacifico', cursive;
+    font-size: 58px;
+  }
+
+nav{
+padding-top: 10px;
+  height: 60px;
+  text-align: center;
+}

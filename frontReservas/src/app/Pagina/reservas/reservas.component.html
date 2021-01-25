@@ -1,0 +1,15 @@
+<div *ngFor="let reserva of rows">
+    <p>Descripcion: {{reserva.descripcion}}</p>
+    <p>Turno: {{reserva.turno}}</p>
+    <p>Sala: {{reserva.sala.nombre}}</p>
+    <p>Fecha a realizar la reunion: {{reserva.fechaReunion | date:'dd/MM/yyyy'}}</p>
+    <p>Momento de la reserva: {{reserva.fecha | date: 'd/M/yyyy h:mm a'}}</p>
+    <p>Datos persona que hizo la reserva:
+    <p>Nombre: {{reserva.persona.nombre}}</p>
+    <p>DNI: {{reserva.persona.dni}}</p>
+    <p>Telefono: {{reserva.persona.telefono}}</p>
+    <p>Email: {{reserva.persona.email}}</p>
+    <button mat-raised-button color="warn" (click)="eliminar(reserva._id)" type="button" routerLink="/"><mat-icon>delete_forever</mat-icon> Eliminar reserva </button>
+    <hr>
+    <hr>
+</div>

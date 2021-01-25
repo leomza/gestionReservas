@@ -1,0 +1,21 @@
+<form [formGroup]="myForm" (ngSubmit)="crearSala()">
+    <div class="centrar-formulario">
+        <div>
+            <label>Nombre: </label>
+            <mat-form-field appearance="fill">
+                <input type="text" formControlName="nombre" matInput>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-error *ngIf="myForm.get('nombre').hasError('required') && myForm.get('nombre').dirty">El nombre es obligatorio</mat-error>
+        </div>
+        
+        <div>
+            <label>Descripción: </label>
+            <mat-form-field appearance="fill">
+                <input type="text" formControlName="descripcion" matInput>
+            </mat-form-field>
+        </div>
+            <button mat-raised-button color="primary" type="submit" [disabled]="myForm.invalid">Crear sala</button>
+        </div>
+</form>

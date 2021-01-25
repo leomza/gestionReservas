@@ -1,0 +1,35 @@
+<form [formGroup]="myForm" (ngSubmit)="login()" action="javascript: void(0);" id="login-form" class="login-form" autocomplete="off" role="main">
+    <h1 class="a11y-hidden">Login Form</h1>
+    <div>
+      <label class="label-email">
+        <input type="text" formControlName="username" class="text" name="email" placeholder="Nombre de usuario" tabindex="1" required />
+        <span class="required">Nombre de usuario</span>
+      </label>
+    </div>
+    <mat-error *ngIf="myForm.get('username').hasError('required') && myForm.get('username').dirty">Por favor ingresa tu nombre de usuario</mat-error>
+    
+    <input type="checkbox" name="show-password" class="show-password a11y-hidden" id="show-password" tabindex="3" />
+    <label class="label-show-password" for="show-password">
+      <span>Mostrar contraseña</span>
+    </label>
+    <div>
+      <label class="label-password">
+        <input formControlName="password" type="text" class="text" name="password" placeholder="Contraseña" tabindex="2" required />
+        <span class="required">Contraseña</span>
+      </label>
+    </div>
+    <mat-error *ngIf="myForm.get('password').hasError('required') && myForm.get('password').dirty">La contraseña es obligatoria</mat-error>
+    <input type="submit" value="Iniciar Sesión" />
+    <figure aria-hidden="true">
+      <div class="person-body"></div>
+      <div class="neck skin"></div>
+      <div class="head skin">
+        <div class="eyes"></div>
+        <div class="mouth"></div>
+      </div>
+      <div class="hair"></div>
+      <div class="ears"></div>
+      <div class="shirt-1"></div>
+      <div class="shirt-2"></div>
+    </figure>
+  </form>
